@@ -16,7 +16,7 @@
 @property (nonatomic, assign) GLuint        textureNM;
 @property (nonatomic, assign) GLuint        vertexArray;
 @property (nonatomic, assign) GLuint        vertexBuffer;
-@property (nonatomic, assign) long          size;
+@property (nonatomic, assign) GLsizei       size;
 @property (nonatomic, strong) NSString      *name;
 @property (nonatomic, assign) int           drawMode;
 

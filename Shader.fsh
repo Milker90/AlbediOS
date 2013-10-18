@@ -46,7 +46,7 @@ void main()
     else
     {
         vec4 diffuseColor = vec4(uDiffuseColor.xyz, 1.0);
-        vec4 ambientColor = vec4(0.2, 0.2, 0.2, 1.0) * diffuseColor;
+        vec4 ambientColor = vec4(0.1, 0.1, 0.1, 1.0) * diffuseColor;
         vec4 lightColor = uLightColor;
         vec4 specularColor = vec4(1.0, 1.0, 1.0, 1.0);
         

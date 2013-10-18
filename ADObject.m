@@ -80,7 +80,7 @@
         NSDictionary *dico = [ADUtils generateVertexArrayFromOBJFile:name];
         if(!dico)return nil;
         
-        _size = [[dico objectForKey:@"size"] longValue];
+        _size = [[dico objectForKey:@"size"] unsignedIntValue];
         _size /= 8;
         _vertexArray = [[dico objectForKey:@"vertexArray"] unsignedIntValue];
         _vertexBuffer = [[dico objectForKey:@"vertexBuffer"] unsignedIntValue];

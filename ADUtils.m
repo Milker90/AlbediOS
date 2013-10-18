@@ -119,22 +119,22 @@ static ADUtils *_sharedUtils = nil;
         }
         
         int i = 0;
-        int floatCount = face.count * ((3 + 2 + 3) * 3);
+        int floatCount = (int)face.count * ((3 + 2 + 3) * 3);
         GLfloat *vertexData = (GLfloat*)malloc(sizeof(GLfloat)*floatCount);
         
         for (NSArray *a in face)
         {
-            int iv1 = [[a objectAtIndex:0] integerValue] - 1;
-            int ivt1 = [[a objectAtIndex:1] integerValue] - 1;
-            int ivn1 = [[a objectAtIndex:2] integerValue] - 1;
+            int iv1 = [[a objectAtIndex:0] intValue] - 1;
+            int ivt1 = [[a objectAtIndex:1] intValue] - 1;
+            int ivn1 = [[a objectAtIndex:2] intValue] - 1;
             
-            int iv2 = [[a objectAtIndex:3] integerValue] - 1;
-            int ivt2 = [[a objectAtIndex:4] integerValue] - 1;
-            int ivn2 = [[a objectAtIndex:5] integerValue] - 1;
+            int iv2 = [[a objectAtIndex:3] intValue] - 1;
+            int ivt2 = [[a objectAtIndex:4] intValue] - 1;
+            int ivn2 = [[a objectAtIndex:5] intValue] - 1;
             
-            int iv3 = [[a objectAtIndex:6] integerValue] - 1;
-            int ivt3 = [[a objectAtIndex:7] integerValue] - 1;
-            int ivn3 = [[a objectAtIndex:8] integerValue] - 1;
+            int iv3 = [[a objectAtIndex:6] intValue] - 1;
+            int ivt3 = [[a objectAtIndex:7] intValue] - 1;
+            int ivn3 = [[a objectAtIndex:8] intValue] - 1;
             
             NSArray *v1 = [vertex objectAtIndex:iv1];
             NSArray *vn1 = [normal objectAtIndex:ivn1];
@@ -199,7 +199,7 @@ static ADUtils *_sharedUtils = nil;
             vertexData[i++] = [[vn3 objectAtIndex:2] floatValue];
         }
         
-        NSLog(@"vertexData generated From OBJ file named: %@. (facecount=%d, size=%d, floatCount=%d, sizeof(float)*floatCount=%ld)", filename, face.count, i, floatCount, sizeof(float)*floatCount);
+        NSLog(@"vertexData generated From OBJ file named: %@. (facecount=%lu, size=%d, floatCount=%d, sizeof(float)*floatCount=%ld)", filename, (unsigned long)face.count, i, floatCount, sizeof(float)*floatCount);
         NSMutableDictionary *dico = [NSMutableDictionary dictionary];
         
         GLuint vertexArray;

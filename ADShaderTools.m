@@ -46,7 +46,7 @@ static ADShaderTools *_tools = nil;
     }
     else
     {
-        _program = [[_cache objectForKey:name] integerValue];
+        _program = [[_cache objectForKey:name] unsignedIntValue];
     }
     
     return _program;
