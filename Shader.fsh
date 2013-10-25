@@ -47,7 +47,7 @@ void main()
     else
     {
         vec4 diffuseColor = vec4(uDiffuseColor.xyz, 1.0);
-        vec4 ambientColor = vec4(0.1, 0.1, 0.1, 1.0) * diffuseColor;
+        vec4 ambientColor = vec4(0.15, 0.15, 0.15, 1.0) * diffuseColor;
         vec4 lightColor = uLightColor;
         vec4 specularColor = vec4(1.0, 1.0, 1.0, 1.0);
         
@@ -104,11 +104,23 @@ void main()
         float power = (uLightType == kLightTypesDirectional)?1.0:uLightPower;
         float d = (uLightType == kLightTypesDirectional)?1.0:distance(vLightPosition, vWorldPosition);
         
+        vec4 finalDiffuse = (diffuseColor * lightColor * nDotVP * power / (d*d));
         if(uEmissive == 1)
         {
-            nDotVP = 1.0;
+            finalDiffuse = diffuseColor;
             specFactor = 0.0;
         }
+        
+        //shadow mapping
+        float bias = 0.003;
+        int isShadow = 0;
+        //cette ligne permet d'enlever l'ombre ajouté en dehors de la zone d'ombrage. Si on sort de la zone d'ombrage alors n'ajoute plus d'ombre.
+        if(vSMcoords.x/vSMcoords.w > 0.0 && vSMcoords.x/vSMcoords.w < 1.0 && vSMcoords.y/vSMcoords.w > 0.0 && vSMcoords.y/vSMcoords.w < 1.0)
+            if(texture2D(uTextureSM, vSMcoords.xy/vSMcoords.w).z < vSMcoords.z/vSMcoords.w - bias)
+            {
+                specFactor = 0.0;
+                isShadow = 1;
+            }
         
         gl_FragColor =
         ((uTextured) ? texture2D(uTexture, vCoords.xy) : vec4(1.0, 1.0, 1.0, 1.0))
@@ -116,16 +128,12 @@ void main()
         (
          ambientColor
          +
-         (diffuseColor * lightColor * nDotVP * power / (d*d))
+         finalDiffuse
          +
-         (specularColor * lightColor * power * pow(specFactor, shininess))
+         (specularColor * lightColor * power * pow(specFactor, shininess) / (d*d))
          );
         
-        //shadow mapping
-        float bias = 0.003;
-        //cette ligne permet d'enlever l'ombre ajouté en dehors de la zone d'ombrage. Si on sort de la zone d'ombrage alors n'ajoute plus d'ombre.
-        if(vSMcoords.x/vSMcoords.w > 0.0 && vSMcoords.x/vSMcoords.w < 1.0 && vSMcoords.y/vSMcoords.w > 0.0 && vSMcoords.y/vSMcoords.w < 1.0)
-            if(texture2D(uTextureSM, vSMcoords.xy/vSMcoords.w).z < vSMcoords.z/vSMcoords.w - bias)
-                gl_FragColor *= 0.3;
+        if(isShadow == 1)
+            gl_FragColor *= 0.3;
     }
 }
