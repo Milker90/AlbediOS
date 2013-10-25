@@ -46,6 +46,11 @@
 
 @synthesize children        = _children;
 
++(ADNode *)node
+{
+    return [[ADNode alloc] init];
+}
+
 -(id)init
 {
     if(self = [super init])

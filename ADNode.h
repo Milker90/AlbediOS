@@ -35,6 +35,8 @@ enum kRotationMode {
 @property (nonatomic, assign) GLfloat           scaleZ;
 @property (nonatomic, assign) GLfloat           scale;
 
+@property (nonatomic, strong) NSString          *name;
+
 @property (nonatomic, assign) GLKVector4        position;
 
 @property (nonatomic, assign) GLKMatrix4        matrix;
@@ -52,5 +54,7 @@ enum kRotationMode {
 -(void)moveForward:(float)speed;
 
 -(void)configureUniform;
+
++(ADNode*)node;
 
 @end

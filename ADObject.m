@@ -81,6 +81,8 @@
     {
         _diffuse = color;
         
+        self.name = name;
+        
         NSDictionary *dico = [ADUtils generateVertexArrayFromOBJFile:name];
         
         if(!dico)

@@ -80,10 +80,10 @@ static ADDirector *_sharedDirector = nil;
     [camera configureUniform];
     [world configureUniform];
     
-    [ADDirector sharedDirector].glkView = glkView;
-    [ADDirector sharedDirector].light = light;
-    [ADDirector sharedDirector].camera = camera;
-    [ADDirector sharedDirector].world = world;
+    self.glkView = glkView;
+    self.light = light;
+    self.camera = camera;
+    self.world = world;
 }
 
 -(void)update:(NSTimeInterval)delta
