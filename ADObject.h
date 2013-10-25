@@ -19,6 +19,7 @@
 @property (nonatomic, assign) GLsizei       size;
 @property (nonatomic, strong) NSString      *name;
 @property (nonatomic, assign) int           drawMode;
+@property (nonatomic, assign) BOOL          emissive;
 
 -(id)initWithName:(NSString*)name textureName:(NSString*)textureName tint:(GLKVector3)tint;
 -(id)initWithName:(NSString*)name textureName:(NSString*)textureName;

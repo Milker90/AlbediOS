@@ -12,6 +12,7 @@
 {    
     GLuint uNormalMatrix;
     GLuint uShininess;
+    GLuint uEmissive;
     GLuint uDiffuseColor;
     GLuint uTextured;
     GLuint uTexturedNM;
@@ -31,12 +32,13 @@
 @synthesize vertexBuffer    = _vertexBuffer;
 @synthesize size            = _size;
 @synthesize drawMode        = _drawMode;
+@synthesize emissive        = _emissive;
 
 -(id)init
 {
     if(self = [super init])
     {
-        _shininess = 5.0;
+        _shininess = 50.0;
         _diffuse = GLKVector3Make(1.0, 1.0, 1.0);
         _texture = 0;
         _textureNM = 0;
@@ -44,9 +46,11 @@
         _vertexBuffer = 0;
         _size = 0;
         _drawMode = GL_TRIANGLES;
+        _emissive = NO;
         
         uNormalMatrix = glGetUniformLocation([ADShaderTools tools].shader, "normalMatrix");
         uShininess = glGetUniformLocation([ADShaderTools tools].shader, "uShininess");
+        uEmissive = glGetUniformLocation([ADShaderTools tools].shader, "uEmissive");
         uDiffuseColor = glGetUniformLocation([ADShaderTools tools].shader, "uDiffuseColor");
         uTextured = glGetUniformLocation([ADShaderTools tools].shader, "uTextured");
         uTexturedNM = glGetUniformLocation([ADShaderTools tools].shader, "uTexturedNM");
@@ -112,6 +116,7 @@
     
     glUniform4fv(uDiffuseColor, 1, _diffuse.v);
     glUniform1f(uShininess, _shininess);
+    glUniform1i(uEmissive, _emissive);
     
     glUniform1i(uTextured, _texture);
     glUniform1i(uTexturedNM, _textureNM);

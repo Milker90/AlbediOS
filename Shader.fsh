@@ -22,6 +22,7 @@ uniform bool        SMEnabled;
 
 uniform vec4        uDiffuseColor;
 uniform float       uShininess;
+uniform int         uEmissive;
 
 uniform float       uLightPower;
 uniform int         uLightType;
@@ -102,6 +103,12 @@ void main()
         float shininess = uShininess;
         float power = (uLightType == kLightTypesDirectional)?1.0:uLightPower;
         float d = (uLightType == kLightTypesDirectional)?1.0:distance(vLightPosition, vWorldPosition);
+        
+        if(uEmissive == 1)
+        {
+            nDotVP = 1.0;
+            specFactor = 0.0;
+        }
         
         gl_FragColor =
         ((uTextured) ? texture2D(uTexture, vCoords.xy) : vec4(1.0, 1.0, 1.0, 1.0))
