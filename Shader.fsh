@@ -37,7 +37,7 @@ varying vec4        vLightPosition;
 //varying vec4        SMz;
 
 void main()
-{    
+{
     if(SMEnabled)
     {
         //gl_FragColor = vec4(SMz.z/SMz.w,SMz.z/SMz.w,SMz.z/SMz.w,1.0);
@@ -94,8 +94,10 @@ void main()
         }
         
         float nDotVP = max(0.0, dot(eyeNormal, normalize(lightVec)));
-        vec3 halfPlane = normalize(normalize(lightVec) - normalize(eyeVec));
-        float specFactor = max(0.0, dot(halfPlane, eyeNormal));
+        vec3 halfPlane = normalize(normalize(lightVec) + normalize(eyeVec));
+        float specFactor = 0.0;
+        if(nDotVP > 0.0)
+            specFactor = max(0.0, dot(halfPlane, eyeNormal));
         
         float shininess = uShininess;
         float power = (uLightType == kLightTypesDirectional)?1.0:uLightPower;
@@ -104,13 +106,13 @@ void main()
         gl_FragColor =
         ((uTextured) ? texture2D(uTexture, vCoords.xy) : vec4(1.0, 1.0, 1.0, 1.0))
         *
-            (
-             ambientColor
-             +
-             (diffuseColor * lightColor * nDotVP * power / (d*d))
-             +
-             (specularColor * lightColor * power * pow(specFactor, shininess))
-             );
+        (
+         ambientColor
+         +
+         (diffuseColor * lightColor * nDotVP * power / (d*d))
+         +
+         (specularColor * lightColor * power * pow(specFactor, shininess))
+         );
         
         //shadow mapping
         float bias = 0.003;

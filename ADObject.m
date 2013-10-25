@@ -78,7 +78,9 @@
         _diffuse = color;
         
         NSDictionary *dico = [ADUtils generateVertexArrayFromOBJFile:name];
-        if(!dico)return nil;
+        
+        if(!dico)
+            return nil;
         
         _size = [[dico objectForKey:@"size"] unsignedIntValue];
         _size /= 8;
