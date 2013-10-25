@@ -26,7 +26,6 @@
 		563E53B917F1784C005FA86B /* testOGL5Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 563E53B817F1784C005FA86B /* testOGL5Tests.m */; };
 		563E540517F182D1005FA86B /* nm.png in Resources */ = {isa = PBXBuildFile; fileRef = 563E540417F182D1005FA86B /* nm.png */; };
 		565BEA6E181A9704005187FF /* lmp005.obj in Resources */ = {isa = PBXBuildFile; fileRef = 565BEA6D181A9704005187FF /* lmp005.obj */; };
-		565BEA70181AA033005187FF /* nm2.png in Resources */ = {isa = PBXBuildFile; fileRef = 565BEA6F181AA033005187FF /* nm2.png */; };
 		565BEA73181AC199005187FF /* t.png in Resources */ = {isa = PBXBuildFile; fileRef = 565BEA71181AC199005187FF /* t.png */; };
 		565BEA74181AC199005187FF /* tnm.png in Resources */ = {isa = PBXBuildFile; fileRef = 565BEA72181AC199005187FF /* tnm.png */; };
 		565BEA9F181ACD38005187FF /* ADCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 565BEA77181ACD38005187FF /* ADCamera.m */; };
@@ -89,7 +88,6 @@
 		563E53B817F1784C005FA86B /* testOGL5Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testOGL5Tests.m; sourceTree = "<group>"; };
 		563E540417F182D1005FA86B /* nm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nm.png; path = textures/nm.png; sourceTree = "<group>"; };
 		565BEA6D181A9704005187FF /* lmp005.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lmp005.obj; sourceTree = "<group>"; };
-		565BEA6F181AA033005187FF /* nm2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nm2.png; path = textures/nm2.png; sourceTree = "<group>"; };
 		565BEA71181AC199005187FF /* t.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = t.png; path = textures/t.png; sourceTree = "<group>"; };
 		565BEA72181AC199005187FF /* tnm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tnm.png; path = textures/tnm.png; sourceTree = "<group>"; };
 		565BEA76181ACD38005187FF /* ADCamera.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCamera.h; sourceTree = "<group>"; };
@@ -206,7 +204,6 @@
 				565BEA71181AC199005187FF /* t.png */,
 				565BEA72181AC199005187FF /* tnm.png */,
 				563E540417F182D1005FA86B /* nm.png */,
-				565BEA6F181AA033005187FF /* nm2.png */,
 				563E53A517F1784C005FA86B /* Images.xcassets */,
 				563E538D17F1784C005FA86B /* Supporting Files */,
 			);
@@ -388,7 +385,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				565BEA70181AA033005187FF /* nm2.png in Resources */,
 				563E540517F182D1005FA86B /* nm.png in Resources */,
 				565BEAB6181ACD77005187FF /* ViewController in Resources */,
 				565BEAA9181ACD38005187FF /* README.md in Resources */,

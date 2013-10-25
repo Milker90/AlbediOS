@@ -111,10 +111,11 @@
     ADPlane *ground = [[ADPlane alloc] initWithQuality:20];
     ground.y = -5.0;
     ground.scale = 200.0;
-    ground.texture = [ADUtils getTextureNamed:@"t.png" bottomLeft:YES];
-    ground.textureNM = [ADUtils getTextureNamed:@"tnm.png" bottomLeft:YES];
+    //ground.diffuse = GLKVector3Make(1.0, 0.0, 0.0);
+    ground.texture = [ADUtils getTextureNamed:@"t.png"];
+    ground.textureNM = [ADUtils getTextureNamed:@"tnm.png"];
     ground.rotationX = -90.0;
-    ground.shininess = 200.0;
+    ground.shininess = 250.0;
     [world addNode:ground];
     
     for (uint i = 0; i < 20; i++)
