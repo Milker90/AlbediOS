@@ -234,7 +234,9 @@ static ADUtils *_sharedUtils = nil;
 {
     GLuint texture;
     
-    GLuint cache = [[[ADUtils sharedUtils].textureCache objectForKey:name] unsignedIntValue];
+    NSString *keyName = [name stringByAppendingString:[NSString stringWithFormat:@"-%d", ((bottomLeft)?1:0)]];
+    
+    GLuint cache = [[[ADUtils sharedUtils].textureCache objectForKey:keyName] unsignedIntValue];
     if(cache)
     {
         NSLog(@"cache detected for texture name: %@", name);
@@ -250,14 +252,20 @@ static ADUtils *_sharedUtils = nil;
     if(error)
         NSLog(@"Texture error : %@", error.description);
     
-    [[ADUtils sharedUtils].textureCache setValue:[NSNumber numberWithUnsignedInt:texture] forKey:name];
+    [[ADUtils sharedUtils].textureCache setValue:[NSNumber numberWithUnsignedInt:texture] forKey:keyName];
     
     return texture;
 }
 
 +(GLuint)getTextureNamed:(NSString *)name
 {
-    return [self getTextureNamed:name bottomLeft:YES];
+    return [self getTextureNamed:name bottomLeft:NO];
+}
+
++(void)loadTextureNamed:(NSString *)name
+{
+    [self getTextureNamed:name bottomLeft:NO];
+    [self getTextureNamed:name bottomLeft:YES];
 }
 
 +(void)glGenTextureAndFramebuffer:(GLuint*)t f:(GLuint*)f w:(GLsizei)w h:(GLsizei)h

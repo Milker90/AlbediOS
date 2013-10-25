@@ -16,6 +16,7 @@
 
 +(ADUtils*)sharedUtils;
 +(NSDictionary*)generateVertexArrayFromOBJFile:(NSString*)filename;
++(void)loadTextureNamed:(NSString *)name;
 +(GLuint)getTextureNamed:(NSString*)name;
 +(GLuint)getTextureNamed:(NSString*)name bottomLeft:(BOOL)bottomLeft;
 +(void)glGenTextureAndFramebuffer:(GLuint*)t f:(GLuint*)f w:(GLsizei)w h:(GLsizei)h;
