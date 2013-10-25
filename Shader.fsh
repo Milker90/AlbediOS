@@ -104,7 +104,9 @@ void main()
         float power = (uLightType == kLightTypesDirectional)?1.0:uLightPower;
         float d = (uLightType == kLightTypesDirectional)?1.0:distance(vLightPosition, vWorldPosition);
         
-        vec4 finalDiffuse = (diffuseColor * lightColor * nDotVP * power / (d*d));
+        float attenuation = 1.0 / (0.0 + 0.0 * d + 1.0 * d * d);
+        
+        vec4 finalDiffuse = (diffuseColor * lightColor * nDotVP * power * attenuation);
         if(uEmissive == 1)
         {
             finalDiffuse = diffuseColor;
@@ -130,7 +132,7 @@ void main()
          +
          finalDiffuse
          +
-         (specularColor * lightColor * power * pow(specFactor, shininess) / (d*d))
+         (specularColor * lightColor * power * pow(specFactor, shininess) * attenuation)
          );
         
         if(isShadow == 1)
