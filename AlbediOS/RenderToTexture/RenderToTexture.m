@@ -4,6 +4,8 @@
 //  Created by Anthony
 //
 
+@import OpenGLES;
+
 #import <GLKit/GLKit.h>
 #import "RenderToTexture.h"
 #import "ADUtils.h"

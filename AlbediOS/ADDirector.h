@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <GLKit/GLKit.h>
 #import "ADUtils.h"
 #import "ADShaderTools.h"
 #import "ADCamera.h"

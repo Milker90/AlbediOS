@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Anthony. All rights reserved.
 //
 
+@import OpenGLES;
+
 #import "RSManager.h"
 #import "ADShaderTools.h"
 #import "ADDirector.h"

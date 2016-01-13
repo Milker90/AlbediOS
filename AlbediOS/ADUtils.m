@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Anthony. All rights reserved.
 //
 
+@import OpenGLES;
+
+#import <GLKit/GLKit.h>
 #import "ADUtils.h"
 
 @implementation ADUtils

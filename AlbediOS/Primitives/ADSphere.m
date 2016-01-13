@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Anthony. All rights reserved.
 //
 
+@import OpenGLES;
+
 #import "ADSphere.h"
 
 @implementation ADSphere
